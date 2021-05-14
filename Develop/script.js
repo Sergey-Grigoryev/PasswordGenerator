@@ -6,8 +6,6 @@ var specialChars = ["!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",",
 var lowercaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var uppercaseLetters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var numbers = ["0","1","2","3","4","5","6","7","8","9"];
-
-
 console.log(specialChars);
 console.log(lowercaseLetters);
 console.log(uppercaseLetters);
@@ -17,35 +15,43 @@ console.log(numbers);
 
 // prompt to get length of pw
 function writePassword() {
-  var pwLength = prompt("Password Length?")
-  console.log(pwLength)
-  var passwordArray = [];
-  var passwordText = [];
 
-  // error + restart if < 8 or > 128
+  var pwLength = prompt("Password Length?");
+  console.log(pwLength);
+  var pwLengthInt = parseInt(pwLength);
+  console.log(pwLengthInt);
+
+  // alert if < 8 or > 128 + restart
   if (pwLength < 8 || pwLength > 128) {
-  alert("Password must be 8-128 characters")
-  writePassword()
+    alert("Password must be 8-128 characters");
+    return writePassword();
+  };
+
+  // alert if non-intager was entered + restart
+  if (pwLengthInt != pwLength) {
+    alert("Please enter an integer 8-128");
+    return writePassword();
   };
 
   // Let user choose which chars they want
+  var passwordArray = [];
+  var passwordText = [];
   var useSpecial = confirm("Do you want to include special characters? (eg. !@#$%)");
-  var useLower = confirm("Do you want to include lowercase letters?");
-  var useUpper = confirm("Do you want to include uppercase letters?");
-  var useNumber = confirm("Do you want to include numbers?");
-  
   console.log(useSpecial);
+  var useLower = confirm("Do you want to include lowercase letters?");
   console.log(useLower);
+  var useUpper = confirm("Do you want to include uppercase letters?");
   console.log(useUpper);
+  var useNumber = confirm("Do you want to include numbers?");
   console.log(useNumber);
 
   // if none were chosen
     if (useLower === false && useNumber === false && useSpecial === false && useUpper === false) {
-      alert("Must choose at lease 1 character type!")
-      writePassword()
+      alert("Must choose at lease 1 character type!");
+      writePassword();
     };
-
-  // add all chosen chars to passwordArray array
+  
+  // add all chosen chars to passwordArray
     if (useSpecial) {
      passwordArray.push(...specialChars);
     };
