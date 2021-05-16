@@ -19,6 +19,11 @@ function writePassword() {
   var pwLengthInt = parseInt(pwLength);
   console.log(pwLengthInt);
 
+  // exit if cancel
+  if (pwLength == null) {
+    return null;
+  };
+
   // alert if < 8 or > 128 + restart
   if (pwLength < 8 || pwLength > 128) {
     alert("Password must be 8-128 characters");
