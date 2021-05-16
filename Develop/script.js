@@ -12,10 +12,8 @@ console.log(uppercaseLetters);
 console.log(numbers);
 
 // Write password to the #password input
-
-// prompt to get length of pw
 function writePassword() {
-
+  // prompt to get length of pw
   var pwLength = prompt("Password Length?");
   console.log(pwLength);
   var pwLengthInt = parseInt(pwLength);
@@ -48,7 +46,7 @@ function writePassword() {
   // if none were chosen
     if (useLower === false && useNumber === false && useSpecial === false && useUpper === false) {
       alert("Must choose at lease 1 character type!");
-      writePassword();
+      return writePassword();
     };
   
   // add all chosen chars to passwordArray
@@ -90,3 +88,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
